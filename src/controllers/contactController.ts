@@ -160,3 +160,24 @@ export const identifyContact =  async (req: Request, res: Response) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   };
+
+  // GET /contacts endpoint
+export const getAllContacts =  async (req: Request, res: Response) => {
+  try {
+    
+    const contacts = await prisma.contact.findMany({
+      orderBy: { createdAt: 'asc' },
+    });
+
+
+    res.status(200).json({ contacts });
+    return;
+
+  } catch (error) {
+
+    console.error('Error fetching contacts:', error);
+    res.status(500).json({ error: 'Internal server error' });
+    return;
+    
+  }
+};

@@ -103,10 +103,31 @@ Create or update contact.
   ```json
     {
         "id": "<id>",
-        "name": "<name>",
-        "status": "<status>",
-        "decommissionedAt": null
+        "email": "<email>",
+        "phoneNumber": "<status>",
+        "linkPrecedence":"<primary | secondary>",
+        "createdAt": null,
+        "updatedAt": null,
+        "deletedAt": null
     }
+  ```
+#### GET `/identify`
+Get all contacts.
+
+- **Response:**
+  ```json
+    [
+      {
+        "id": "<id>",
+        "email": "<email>",
+        "phoneNumber": "<status>",
+        "linkPrecedence":"<primary | secondary>",
+        "createdAt": null,
+        "updatedAt": null,
+        "deletedAt": null
+    },
+    ...
+    ]
   ```
 
 

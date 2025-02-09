@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
-import { identifyContact } from "./controllers/contactController";
+import { getAllContacts, identifyContact } from "./controllers/contactController";
 import authRouter from './routes/authRoute'
 
 dotenv.config();
@@ -12,6 +12,7 @@ app.use(express.json());
 
 // routes -->
 app.post('/identify', identifyContact)
+app.get('/identify', getAllContacts)
 app.use('/auth', authRouter) // authentication route 
 app.get('/',(req:Request, res:Response)=>{
     res.json({
