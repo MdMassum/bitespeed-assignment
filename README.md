@@ -195,6 +195,6 @@ Authenticate user using credentials.
 
 ## Deployed Links
 
-**Backend Url** -  `https://bitespeed-assignment-five.vercel.app/`
+**Backend Url** -  `https://bitespeed-assignment-ruddy.vercel.app/`
 
 ---
