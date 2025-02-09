@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import { identifyContact } from "./controllers/contactController";
+import authRouter from './routes/authRoute'
 
 dotenv.config();
 
@@ -9,8 +10,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+// routes -->
 app.post('/identify', identifyContact)
-
+app.use('/auth', authRouter) // authentication route 
 app.get('/',(req:Request, res:Response)=>{
     res.json({
         "message":"server up and running"

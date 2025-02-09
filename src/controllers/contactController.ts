@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { findContacts, createContact } from '../services/contactService';
 import prisma from '../config/prisma';
 
+
 export const identifyContact =  async (req: Request, res: Response) => {
     const { email, phoneNumber } = req.body;
   
@@ -58,7 +59,7 @@ export const identifyContact =  async (req: Request, res: Response) => {
   
         // Merging other primary contacts into the oldest one
         if (otherPrimaries.length > 0) {
-          const oldPrimaryIds = otherPrimaries.map((p) => p.id);
+          const oldPrimaryIds = otherPrimaries.map((p:any) => p.id);
   
           // Update other primary contacts to secondary
           await prisma.contact.updateMany({
@@ -93,7 +94,7 @@ export const identifyContact =  async (req: Request, res: Response) => {
         const existingEmails = new Set<string>();
         const existingPhones = new Set<string>();
 
-        mergedClusterContacts.forEach((contact) => {
+        mergedClusterContacts.forEach((contact:any) => {
           if (contact.email) existingEmails.add(contact.email);
           if (contact.phoneNumber) existingPhones.add(contact.phoneNumber);
         });
@@ -129,7 +130,7 @@ export const identifyContact =  async (req: Request, res: Response) => {
         const phoneNumbers: string[] = [];
         const phoneNumbersSet = new Set<string>();
   
-        updatedMergedCluster.forEach((contact) => {
+        updatedMergedCluster.forEach((contact:any) => {
           if (contact.email && !emailsSet.has(contact.email)) {
             emails.push(contact.email);
             emailsSet.add(contact.email);
@@ -141,8 +142,8 @@ export const identifyContact =  async (req: Request, res: Response) => {
         });
   
         const secondaryContactIds = updatedMergedCluster
-          .filter((c) => c.id !== oldestPrimary.id)
-          .map((c) => c.id);
+          .filter((c:any) => c.id !== oldestPrimary.id)
+          .map((c:any) => c.id);
   
         res.status(200).json({
           contact: {
